@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="em_lact.list">
       <field name="name">em_lact list</field>
       <field name="model">em_lact.em_lact</field>
@@ -13,46 +13,30 @@
         </tree>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="em_lact.action_window">
-      <field name="name">em_lact window</field>
+      <field name="name">Empresas Lacteos</field>
       <field name="res_model">em_lact.em_lact</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="em_lact.action_server">
-      <field name="name">em_lact server</field>
-      <field name="model_id" ref="model_em_lact_em_lact"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
-      </field>
-    </record>
--->
 
     <!-- Top menu item -->
-<!--
-    <menuitem name="em_lact" id="em_lact.menu_root"/>
--->
+
+    <menuitem name="Gestion Lacteos" id="em_lact.menu_root"/>
+
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="em_lact.menu_1" parent="em_lact.menu_root"/>
     <menuitem name="Menu 2" id="em_lact.menu_2" parent="em_lact.menu_root"/>
--->
+
     <!-- actions -->
-<!--
     <menuitem name="List" id="em_lact.menu_1_list" parent="em_lact.menu_1"
               action="em_lact.action_window"/>
+<!--
     <menuitem name="Server to list" id="em_lact" parent="em_lact.menu_2"
               action="em_lact.action_server"/>
 -->
