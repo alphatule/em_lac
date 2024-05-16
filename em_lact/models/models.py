@@ -9,20 +9,22 @@ class em_lact(models.Model):
 
     name = fields.Char()
     fecha_creacion = fields.Date()
+    imagen_em = fields.Binary(string="Imagen")
+    cif = fields.Char()
     # valoracion =
-    direccion = fields.Date()
+    direccion = fields.Text()
     dueno = fields.Char()
     num_empleados = fields.Integer()
     tipo_empresa = fields.Char(compute="_tipo_empresa", store=True)
     activo = fields.Boolean(compute="_tipo_empresa", store=True)
 
-    @api.depends('num_empleados')
+    @api.depends('num_empleados','dueno')
     def _tipo_empresa(self):
         for record in self:
-            if dueno != "":
-                record.activo = True
-            else:
+            if record.dueno == False:
                 record.activo = False
+            else:
+                record.activo = True
 
             if record.num_empleados < 10:
                 record.tipo_empresa = "Micropyme"

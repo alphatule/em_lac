@@ -7,12 +7,40 @@
       <field name="model">em_lact.em_lact</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <!-- <field name="tipo_empresa"/>
-          <field name="activo"/> -->
-          <!-- <field name="value"/>
-          <field name="value2"/> -->
+          <field name="cif" string="CIF"/>
+          <field name="name" string="Nombre"/>
+          <!-- <field name="imagen_em" string="Imagen" widget="image" class="oe_left oe_avatar"/> -->
+          <field name="tipo_empresa" string="Tipo de Empresa"/>
+          <field name="activo" string="Activa?"/>
         </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="em_lact.view_form_empresa">
+      <field name="name">empresa form</field>
+      <field name="model">em_lact.em_lact</field>
+      <field name="arch" type="xml">
+        <form string="Empresa Form">
+          <sheet>
+            <group colspan="2">
+              <group>
+                <separator string="Datos Principales Empresa" colspan="2"/>
+                <field name="imagen_em" string="Imagen empresa" widget="image" class="oe_left oe_avatar" />
+                <field name="cif" string="CIF" required="1"/>
+                <field name="name" string="Nombre" required="1"/>
+                <field name="fecha_creacion" string="Fecha de creación" required="1"/>
+                <field name="direccion" string="Dirección" required="1"/>
+              </group>
+
+              <group>
+                <separator string="Info. Extra" colspan="2"/>
+                <field name="dueno" string="Nombre del Dueño"/>
+                <field name="num_empleados" string="Cantidad emp." required="1"/>
+              </group>
+
+            </group>
+          </sheet>
+        </form>
       </field>
     </record>
 
@@ -32,15 +60,11 @@
 
     <!-- menu categories -->
 
-    <menuitem name="Menu 1" id="em_lact.=" parent="em_lact.menu_root"/>
+    <menuitem name="Empresas" id="em_lact.menu_1" parent="em_lact.menu_root"/>
     <menuitem name="Menu 2" id="em_lact.menu_2" parent="em_lact.menu_root"/>
 
     <!-- actions -->
-    <!-- <menuitem name="Ges. Lacteos" id="em_lact.menu_1_list" parent="em_lact.menu_1"
-              action="em_lact.action_window"/> -->
-<!--
-    <menuitem name="Server to list" id="em_lact" parent="em_lact.menu_2"
-              action="em_lact.action_server"/>
--->
+    <menuitem name="Ges. Lacteos" id="em_lact.menu_1_list" parent="em_lact.menu_1"
+              action="em_lact.action_window"/>
   </data>
 </odoo>
