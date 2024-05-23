@@ -4,7 +4,7 @@
 
     <record model="ir.ui.view" id="em_lact.list">
       <field name="name">em_lact list</field>
-      <field name="model">em_lact.em_lact</field>
+      <field name="model">em_lact.em</field>
       <field name="arch" type="xml">
         <tree>
           <field name="cif" string="CIF"/>
@@ -18,7 +18,7 @@
 
     <record model="ir.ui.view" id="em_lact.view_form_empresa">
       <field name="name">empresa form</field>
-      <field name="model">em_lact.em_lact</field>
+      <field name="model">em_lact.em</field>
       <field name="arch" type="xml">
         <form string="Empresa Form">
           <sheet>
@@ -45,26 +45,41 @@
     </record>
 
 
+    <!-- Aqui va lo de los productos -->
+
+    <record model="ir.ui.view" id="em_lact.prod_list">
+		  <field name="name">em_lact prod list</field>
+		  <field name="model">em_lact.prod</field>
+		  <field name="arch" type="xml">
+			<tree>
+				<field name="name"/>
+			</tree>
+		  </field>
+		</record>  
+
+
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="em_lact.action_window">
       <field name="name">Empresas Lacteos</field>
-      <field name="res_model">em_lact.em_lact</field>
+      <field name="res_model">em_lact.em</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="em_lact.action_window_prod">
+      <field name="name">Productos Lacteos</field>
+      <field name="res_model">em_lact.prod</field>
       <field name="view_mode">tree,form</field>
     </record>
 
 
     <!-- Top menu item -->
-
     <menuitem name="Gen. Lacteos" id="em_lact.menu_root"/> 
-
     <!-- menu categories -->
+    <menuitem name="Empresas" id="em_lact.em" parent="em_lact.menu_root" action="em_lact.action_window"/>
+    <!-- <menuitem name="Productos Lac." id="em_lact.prod" parent="em_lact.menu_root" action="em_lact.action_window_prod"/> -->
+    <!-- <menuitem name="Productos Lac. 2" id="em_lact.em" parent="em_lact.menu_root" action="em_lact.action_window"/> -->
+    <!-- <menuitem name="Productos Lac. 2" id="em_lact.em" parent="em_lact.menu_root" action="em_lact.action_window"/> -->
 
-    <menuitem name="Empresas" id="em_lact.menu_1" parent="em_lact.menu_root"/>
-    <menuitem name="Menu 2" id="em_lact.menu_2" parent="em_lact.menu_root"/>
-
-    <!-- actions -->
-    <menuitem name="Ges. Lacteos" id="em_lact.menu_1_list" parent="em_lact.menu_1"
-              action="em_lact.action_window"/>
   </data>
 </odoo>

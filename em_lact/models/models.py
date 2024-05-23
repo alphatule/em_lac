@@ -3,12 +3,12 @@
 from odoo import models, fields, api
 
 
-class em_lact(models.Model):
-    _name = 'em_lact.em_lact'
-    _description = 'em_lact.em_lact'
+class em_lact_em(models.Model):
+    _name = 'em_lact.em'
+    _description = 'em_lact.em'
 
-    name = fields.Char()
-    fecha_creacion = fields.Date()
+    name = fields.Char('Nombre Empresa')
+    fecha_creacion = fields.Date('Fecha creación')
     imagen_em = fields.Binary(string="Imagen")
     cif = fields.Char()
     # valoracion =
@@ -37,13 +37,8 @@ class em_lact(models.Model):
             elif record.num_empleados < 10000:
                 record.tipo_empresa = "Multinacional"
                 
+class em_lact_prod(models.Model):
+    _name = 'em_lact.prod'
+    _description = 'em_lact.prod'
 
-    # name = fields.Char()
-    # value = fields.Integer()
-    # value2 = fields.Float(compute="_value_pc", store=True)
-    # description = fields.Text()
-
-    # @api.depends('value')
-    # def _value_pc(self):
-    #     for record in self:
-    #         record.value2 = float(record.value) / 100
+    name = fields.Char('Nombre Producto')
