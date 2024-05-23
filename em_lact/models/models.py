@@ -18,6 +18,9 @@ class em_lact_em(models.Model):
     tipo_empresa = fields.Char(compute="_tipo_empresa", store=True)
     activo = fields.Boolean(compute="_tipo_empresa", store=True)
 
+    notes = fields.Text('Notas')
+    productos = fields.One2many(comodel_name="em_lact.prod", string="Productos", inverse_name="empresa")
+
     @api.depends('num_empleados','dueno')
     def _tipo_empresa(self):
         for record in self:
@@ -41,4 +44,9 @@ class em_lact_prod(models.Model):
     _name = 'em_lact.prod'
     _description = 'em_lact.prod'
 
+    codigo = fields.Char()
     name = fields.Char('Nombre Producto')
+    imagen_prod = fields.Binary(string="Imagen")
+    fecha_creacion = fields.Date('Fecha creación')
+    dueno = fields.Char('Dueño')
+    empresa = fields.Many2one(comodel_name="em_lact.em", string="Empresa asociada")

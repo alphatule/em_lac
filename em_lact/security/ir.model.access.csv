@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_em_lact_em_lact,em_lact.em,model_em_lact_em,base.group_user,1,1,1,1
-access_em_lact_em_lact,em_lact.prod,model_em_lact_prod,base.group_user,1,1,1,1
+access_em_lact_em,em_lact.em,model_em_lact_em,base.group_user,1,1,1,1
+access_em_lact_prod,em_lact.prod,model_em_lact_prod,base.group_user,1,1,1,1
