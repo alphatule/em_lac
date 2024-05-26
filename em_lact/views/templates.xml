@@ -1,24 +1,31 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
-        </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
-            </t>
-          </dl>
-        </template>
--->
+      <template id="report_em_view">
+			<t t-call="web.html_container">
+				<t t-foreach="docs" t-as="doc">				
+					<t t-call="web.external_layout">
+						<div class="page">
+              <!-- Imagen de la empresa -->
+              <img t-attf-src="data:image/*;base64,{{doc.imagen_em}}" height="100" width="100"/>
+              <!-- Info de la empresa -->
+              <h1>CIF - Nombre: <span t-field="doc.cif"/> - <span t-field="doc.name"/> </h1>
+							<p>Dueño: <span t-field="doc.dueno"/></p>
+							<p>Fecha creación: <span t-field="doc.fecha_creacion"/></p>
+							<p>Direccion: <span t-field="doc.direccion"/></p>
+							<p>Tipo de empresa: <span t-field="doc.tipo_empresa"/></p>
+							<p>Numero de empleados contratados: <span t-field="doc.num_empleados"/></p>
+
+              <!-- Metemos separacion entre una cosa y otra :)) -->
+							<br/>
+              <!-- Aqui va la relacion con los productos -->
+							<h2>Productos</h2>
+							<t t-foreach="doc.productos" t-as="p">
+							  <p>Codigo: <span t-field="p.codigo"/> - <span t-field="p.name"/> </p>
+							</t>
+						</div>
+					</t>
+				</t>
+			</t>
+		</template>
     </data>
 </odoo>

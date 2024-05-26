@@ -29,7 +29,9 @@ class em_lact_em(models.Model):
             else:
                 record.activo = True
 
-            if record.num_empleados < 10:
+            if record.num_empleados == 0:
+                record.tipo_empresa = "Inactiva"
+            elif record.num_empleados < 10:
                 record.tipo_empresa = "Micropyme"
             elif record.num_empleados < 50:
                 record.tipo_empresa = "Pequeña"
@@ -48,5 +50,6 @@ class em_lact_prod(models.Model):
     name = fields.Char('Nombre Producto')
     imagen_prod = fields.Binary(string="Imagen")
     fecha_creacion = fields.Date('Fecha creación')
-    dueno = fields.Char('Dueño')
+    # dueno = fields.Char('Dueño')
+    notes = fields.Text('Notas')
     empresa = fields.Many2one(comodel_name="em_lact.em", string="Empresa asociada")

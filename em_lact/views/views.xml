@@ -1,7 +1,6 @@
 <odoo>
   <data>
     <!-- Lista de empresas -->
-
     <record model="ir.ui.view" id="em_lact.list">
       <field name="name">em_lact list</field>
       <field name="model">em_lact.em</field>
@@ -38,6 +37,7 @@
                 <separator string="Info. Extra" colspan="2"/>
                 <field name="dueno" string="Nombre del Dueño"/>
                 <field name="num_empleados" string="Cantidad emp." required="1"/>
+                <field name="tipo_empresa" string="Tipo de Empresa"/>
               </group>
 
               <notebook>
@@ -61,7 +61,6 @@
       </field>
     </record>
 
-
     <!-- Lista productos -->
 
     <record model="ir.ui.view" id="em_lact.prod_list">
@@ -71,11 +70,42 @@
         <tree>
           <field name="name"/>
           <field name="fecha_creacion"/>
-          <field name="dueno"/>
         </tree>
 		  </field>
-		</record>  
+		</record>
 
+    <!-- Formulario productos -->
+
+    <record model="ir.ui.view" id="em_lact.view_form_productos">
+      <field name="name">producto form</field>
+      <field name="model">em_lact.prod</field>
+      <field name="arch" type="xml">
+        <form string="Empresa Form">
+          <sheet>
+            <group colspan="2">
+              <group>
+                <separator string="Info. Principal" colspan="2"/>
+                <field name="imagen_prod" string="Imagen Producto" widget="image" class="oe_left oe_avatar" />
+                <field name="codigo" required="1"/>
+                <field name="name" required="1"/>
+              </group>
+
+              <group>
+                <separator string="Info. Extra" colspan="2"/>
+                <field name="fecha_creacion" string="Fecha de creación"/>
+                <field name="empresa"/>
+              </group>
+
+              <notebook>
+                <page string="Info. Addicional">
+                  <field name="notes" placeholder="Info. Addicional sobre el producto..."/>
+                </page>
+              </notebook>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
 
@@ -94,11 +124,13 @@
 
     <!-- Top menu item -->
     <menuitem name="Gen. Lacteos" id="em_lact.menu_root"/> 
+
     <!-- menu categories -->
     <menuitem name="Empresas" id="em_lact.em" parent="em_lact.menu_root" action="em_lact.action_window"/>
     <menuitem name="Productos Lac." id="em_lact.prod" parent="em_lact.menu_root" action="em_lact.action_window_prod"/>
-    <!-- <menuitem name="Productos Lac. 2" id="em_lact.em" parent="em_lact.menu_root" action="em_lact.action_window"/> -->
-    <!-- <menuitem name="Productos Lac. 2" id="em_lact.em" parent="em_lact.menu_root" action="em_lact.action_window"/> -->
+
+    <!-- Formulario (apartado final practica) -->
+    <report id="em_lact_report" model="em_lact.em" string="Info. Empresas" name="em_lact.report_em_view" file="em_lact.report_em" menu="True" report_type="qweb-pdf" />
 
   </data>
 </odoo>
